@@ -1,5 +1,27 @@
 #!/usr/local/bin env python
 
+def modulo_power(num, exp, mod):
+    _exp = exp
+    _bin = ''
+
+    while _exp != 0:
+        _bin += str(_exp % 2)
+        _exp /= 2
+    
+    pows = [] 
+
+    k = 0 
+    for val in _bin:
+        if int(val) == 1:
+            pows.append((int(val) +1) ** k) 
+        k+= 1
+
+    r = 1 # not good?
+    for i in pows:
+        r*= (num ** i) % mod
+
+    return r % mod 
+
 def modulo_inverse(a, b):
     u = 1
     w = a 
